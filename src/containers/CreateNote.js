@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import NoteForm from '../components/notes/NoteForm';
 import { connect } from 'react-redux';
+import { newNote } from '../actions/notesAction';
 
 class CreateNote extends PureComponent {
   static propTypes = {
@@ -32,8 +33,8 @@ class CreateNote extends PureComponent {
 } 
 
 const mapDispatchToProps = dispatch => ({
-  createNote() {
-    dispatch();
+  createNote(note) {
+    dispatch(newNote(note));
   }
 });
 

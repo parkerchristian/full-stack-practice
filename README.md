@@ -1,5 +1,11 @@
 # Notes app
 
+### DEPLOY TO NETLIFY
+ * npm run build - makes dist folder
+ * Netlify.com deploy new app
+ * Commands - npm run build
+ * Folders (use) - dist
+
 ## Slices
 
 ### Create Note
@@ -75,4 +81,3 @@
   * update route
 
 ### Add querying
-

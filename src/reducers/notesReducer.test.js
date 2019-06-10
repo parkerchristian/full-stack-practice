@@ -1,7 +1,7 @@
 import reducer from './notesReducer';
-import { NEW_NOTE } from '../actions/notesAction';
+import { NEW_NOTE, NEW_NOTE_PENDING } from '../actions/notesAction';
 
-describe('Reducer Tests', () => {
+describe('Note Reducer Tests', () => {
   it('NEW_NOTE action', () => {
     const initialState = {
       loading: true,
@@ -23,5 +23,19 @@ describe('Reducer Tests', () => {
     });
   });
 
+  it('NEW_NOTE_PENDING action', () => {
+    const initialState = {
+      loading: false,
+      list: []
+    };
+    const newState = reducer(initialState, {
+      type: NEW_NOTE_PENDING
+    });
+
+    expect(newState).toEqual({
+      loading: true,
+      list: []
+    });
+  });
 
 });

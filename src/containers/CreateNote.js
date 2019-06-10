@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import NoteForm from '../components/notes/NoteForm';
-import { connect } from 'tls';
+import { connect } from 'react-redux';
 
 class CreateNote extends PureComponent {
   static propTypes = {

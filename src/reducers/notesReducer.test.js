@@ -1,5 +1,5 @@
 import reducer from './notesReducer';
-import { NEW_NOTE, NEW_NOTE_PENDING } from '../actions/notesAction';
+import { NEW_NOTE, NEW_NOTE_PENDING, FETCH_NOTES, FETCH_NOTES_PENDING } from '../actions/notesAction';
 
 describe('Note Reducer Tests', () => {
   it('NEW_NOTE action', () => {
@@ -32,6 +32,35 @@ describe('Note Reducer Tests', () => {
       type: NEW_NOTE_PENDING
     });
 
+    expect(newState).toEqual({
+      loading: true,
+      list: []
+    });
+  });
+
+  it('FETCH_NOTES action', () => {
+    const initialState = {
+      loading: true,
+      list: []
+    };
+    const newState = reducer(initialState, {
+      type: FETCH_NOTES,
+      payload: [{ title: 'title', body: 'body' }]
+    });
+    expect(newState).toEqual({
+      loading: false,
+      list: [{ title: 'title', body: 'body' }]
+    });
+  });
+
+  it('FETCH_NOTES_PENDING action', () => {
+    const initialState = {
+      loading: false,
+      list: []
+    };
+    const newState = reducer(initialState, {
+      type: FETCH_NOTES_PENDING,
+    });
     expect(newState).toEqual({
       loading: true,
       list: []

@@ -1,7 +1,10 @@
-import { newNote } from './notesAction';
+import { newNote, fetchNotes } from './notesAction';
 
 jest.mock('../services/notesApi.js', () => ({
   createNote() {
+    return Promise.resolve([]);
+  },
+  getNotes() {
     return Promise.resolve([]);
   }
 }));
@@ -21,4 +24,17 @@ describe('Notes Action Tests', () => {
       payload: expect.any(Promise)
     });
   });
+
+  it('action to fetch notes', () => {
+    const noteAction = fetchNotes();
+
+    expect(noteAction).toEqual({
+      type: 'FETCH_NOTES',
+      pendingType: 'FETCH_NOTES_PENDING',
+      fulfilledType: 'FETCH_NOTES_FULFILLED',
+      rejectedType: 'FETCH_NOTES_REJECTED',
+      payload: expect.any(Promise)
+    });
+  });
+  
 });
